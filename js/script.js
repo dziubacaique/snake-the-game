@@ -7,6 +7,10 @@ snake[0] = {
     y: 8 * box
 }
 let direction = "right";
+let food = {
+    x: Math.floor(Math.random() * 15 + 1) * box, /* Math.floor retira o ponto flutuante do math.random*/
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
 
 /*Função criar o background do jogo*/
 function criarBG() {
@@ -20,6 +24,11 @@ function criarCobra() {
         context.fillStyle = "green";
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
+}
+
+function drawFood (){
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box);
 }
 
 
@@ -59,6 +68,7 @@ function startGame() {
 
     criarBG(); /* criando o background da tela do jogo*/
     criarCobra(); /*cria a cobrinha na tela*/
+    drawFood(); /*desenha a comida na tela*/
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
