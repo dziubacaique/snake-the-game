@@ -66,6 +66,14 @@ function startGame() {
         snake[0].y = 16 * box;
     }
 
+    /* Tratando o choque da cobra com o próprio corpo */
+    for (i = 1; i < snake.length; i++) {
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+            clearInterval(game);
+            alert('Game Over');
+        }
+    }
+
     criarBG(); /* criando o background da tela do jogo*/
     criarCobra(); /*cria a cobrinha na tela*/
     drawFood(); /*desenha a comida na tela*/
